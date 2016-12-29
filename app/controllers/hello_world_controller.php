@@ -4,11 +4,23 @@
 
     public static function index(){
       // make-metodi renderöi app/views-kansiossa sijaitsevia tiedostoja
-   	  View::make('home.html');
+   	  echo 'https://github.com/tuutuu/Tsoha-Bootstrap';
     }
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      echo 'Hello World!';
+      View::make('helloworld.html');
+    }
+
+    public static function login(){
+      View::make('suunnitelmat/login.html');
+    }
+
+    public static function movies(){
+      View::make('suunnitelmat/movies.html');
+    }
+
+    public static function reviews(){
+      View::make('suunnitelmat/reviews.html');
     }
   }

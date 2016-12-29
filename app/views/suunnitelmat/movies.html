@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+  <h1>Make Review</h1>
+  <input type="text" class="form-control" placeholder="Title">
+  <input type="text" class="form-control" placeholder="Rating">
+  <input type="text" class="form-control" placeholder="Description">
+  <button class="btn btn-default">Publish</button>
+
+  <h1>Movies</h1>
+
+  <table class="table table-bordered table-striped">
+    <thead>
+      <tr>
+        <th>Title</th>
+        <th>Rating</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>Tekstiä</td>
+        <td>keskiarvo</td>
+      </tr>
+      <tr>
+        <td>Tekstiä</td>
+        <td>keskiarvo</td>
+      </tr>
+    </tbody>
+  </table>
+{% endblock %}
