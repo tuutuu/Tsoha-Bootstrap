@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Elokuvataulukko</h1>
+
+  <p>
+    <a href="{{base_path}}/movie/new" class="btn btn-success">Lisää elokuva</a>
+  </p>
+
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Elokuvan nimi</th>
+        <th></th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for movie in movies %}
+        <tr>
+          <td>{{movie.nimi}}</td>
+          <td><a class="btn btn-default btn-sm" href="{{base_path}}/movie/{{movie.id}}/edit">Muokkaa</a></td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+{% endblock %}

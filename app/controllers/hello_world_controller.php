@@ -9,7 +9,13 @@
 
     public static function sandbox(){
       // Testaa koodiasi täällä
-      View::make('helloworld.html');
+
+
+      //Kint debug
+
+      $movies = Movie::all();
+      Kint::dump($movies);
+
     }
 
     public static function login(){

@@ -1,7 +1,7 @@
 <?php
 
   $routes->get('/', function() {
-    HelloWorldController::index();
+    MovieController::index();
   });
 
   $routes->get('/hiekkalaatikko', function() {
@@ -18,4 +18,20 @@
 
   $routes->get('/reviews', function() {
     HelloWorldController::reviews();
+  });
+
+  $routes->get('/movie', function(){
+    MovieController::index();
+  });
+
+  $routes->post('/movie', function(){
+    MovieController::store();
+  });
+
+  $routes->get('/movie/new', function(){
+    MovieController::create();
+  });
+
+  $routes->get('/movie/:id', function($id){
+    MovieController::show($id);
   });

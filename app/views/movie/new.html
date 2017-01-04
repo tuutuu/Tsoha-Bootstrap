@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Lisää elokuva</h1>
+
+  <form method="post" action="{{base_path}}/movie">
+    <div class="form-group">
+      <label>Elokuvan nimi</label>
+      <input type="text" name="name" class="form-control">
+    </div>
+
+  </form>
+{% endblock %}
