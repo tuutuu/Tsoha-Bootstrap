@@ -1,0 +1,16 @@
+{% extends "base.html" %}
+{% block content %}
+  <h1>Elokuvan {{movie.nimi}} uusi nimi?</h1>
+
+  <form method="post" action="{{base_path}}/movie/{{movie.id}}/edit">
+    <div class="form-group">
+      <label class="control-label">Elokuvan nimi</label>
+      <input type="text" name="nimi" class="form-control" value="{{attributes.nimi}}">
+    </div>
+
+  </form>
+
+  <form method="post" action="{{base_path}}/movie/{{movie.id}}/destroy" style="display: inline-block;">
+    <button type="submit" class="btn btn-danger">Poista elokuva</button>
+  </form>
+{% endblock %}

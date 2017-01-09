@@ -13,9 +13,12 @@
 
       //Kint debug
 
-      $movies = Movie::all();
-      Kint::dump($movies);
+      $leffa = new Movie(array(
+        'nimi' => ''
+      ));
+      $errors = $leffa->errors();
 
+      Kint::dump($errors);
     }
 
     public static function login(){

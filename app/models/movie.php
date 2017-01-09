@@ -6,6 +6,7 @@
     //Konstruktori
     public function __construct($attributes) {
       parent::__construct($attributes);
+      $this->validators = array('validate_nimi');
     }
 
     public static function all() {
@@ -49,5 +50,29 @@
       $query->execute(array('nimi' => $this->nimi));
       $row = $query->fetch();
       $this->id = $row['id'];
+    }
+
+    public function update() {
+      $query = DB::connection()->prepare('UPDATE Movie SET nimi=:nimi WHERE id=:id');
+      $query->execute(array('nimi' => $this->nimi));
+      $row = $query->fetch();
+      $this->id = $row['id'];
+    }
+
+    public function destroy() {
+      $query = DB::connection()->prepare('DELETE FROM Movie WHERE id=:id');
+      $query->execute(array('id' => $this->id));
+    }
+
+    public function validate_nimi() {
+      $errors = array();
+      if ($this->nimi == '' || $this->nimi == null) {
+        $errors[] = 'Nimi ei saa olla tyhjä';
+      }
+      return $errors;
+    }
+
+    public function getId() {
+      return $this->id;
     }
   }

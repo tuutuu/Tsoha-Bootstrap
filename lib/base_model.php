@@ -21,6 +21,18 @@
 
       foreach($this->validators as $validator){
         // Kutsu validointimetodia tässä ja lisää sen palauttamat virheet errors-taulukkoon
+        $add = $this->{$validator}();
+
+        //Siirto
+        $errors = array_merge($errors, $add);
+      }
+
+      return $errors;
+    }
+
+    public function validate_string_length($string, $length) {
+      if(strlen($string) < $length){
+        $errors[] = 'Nimen pituuden tulee olla vähintään '+$length+' merkkiä';
       }
 
       return $errors;
