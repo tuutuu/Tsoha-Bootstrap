@@ -2,12 +2,12 @@
 
   class BaseController{
 
-    public static function get_user_logged_in(){
+    public static function get_reviewer_logged_in(){
       // Toteuta kirjautuneen käyttäjän haku tähän
-      if(isset($_SESSION['user'])) {
-        $user_id = $_SESSION['user'];
-        $user = User::find($user_id);
-        return $user;
+      if(isset($_SESSION['reviewer'])) {
+        $reviewer_id = $_SESSION['reviewer'];
+        $reviewer = Reviewer::find($id);
+        return $reviewer;
       }
       return null;
     }
@@ -15,6 +15,9 @@
     public static function check_logged_in(){
       // Toteuta kirjautumisen tarkistus tähän.
       // Jos käyttäjä ei ole kirjautunut sisään, ohjaa hänet toiselle sivulle (esim. kirjautumissivulle).
+      if(!isset($_SESSION['reviewer'])) {
+        Redirect::to('/login', array('message' => 'Kirjaudu ensin sisään!'));
+      }
     }
 
   }

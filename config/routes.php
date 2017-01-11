@@ -1,5 +1,10 @@
 <?php
 
+  //Käytä reiteissä toisena parametrinä
+  function check_logged_in(){
+    BaseController::check_logged_in();
+  }
+
   $routes->get('/', function() {
     MovieController::index();
   });
@@ -49,9 +54,13 @@
   });
 
   $routes->get('/login', function(){
-    UserController::login();
+    ReviewerController::login();
   });
 
   $routes->post('/login', function(){
-    UserController::handle_login();
+    ReviewerController::handle_login();
+  });
+
+  $routes->post('/logout', function(){
+    ReviewerController::logout();
   });

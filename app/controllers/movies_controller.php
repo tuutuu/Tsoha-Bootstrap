@@ -2,11 +2,13 @@
 
 class MovieController extends BaseController {
   public static function index(){
+    self::check_logged_in();
     $movies = Movie::all();
     View::make('movie/index.html', array('movies' => $movies));
   }
 
   public static function store(){
+    self::check_logged_in();
     $params = $_POST;
     $attributes = array(
       'nimi' => $params['nimi']
@@ -24,20 +26,26 @@ class MovieController extends BaseController {
   }
 
   public static function show($id) {
+    self::check_logged_in();
     $movie = Movie::find($id);
     View::make('movie/show.html', array('movie' => $movie));
   }
 
   public static function create() {
+    self::check_logged_in();
     View::make('movie/new.html');
   }
 
   public static function edit($id) {
+    self::check_logged_in();
     $movie = Movie::find($id);
     View::make('movie/edit.html', array('attributes' => $movie));
   }
 
   public static function update($id) {
+    self::check_logged_in();
+    //Todo SQL
+
     $params = $_POST;
 
     $attributes = array(
@@ -59,6 +67,9 @@ class MovieController extends BaseController {
   }
 
   public static function destroy($id) {
+    self::check_logged_in();
+    //Todo SQL
+
     $movie = new Movie(array('id' => $id));
     $movie->destroy();
     Redirect::to('/movie', array('message' => 'Elokuva poistettu'));

@@ -5,17 +5,18 @@ CREATE TABLE Movie(
 );
 
 CREATE TABLE Reviewer(
-  nimi varchar(20) PRIMARY KEY,
+  id SERIAL PRIMARY KEY,
+  nimi varchar(20) NOT NULL,
   salasana varchar(50)
 );
 
 CREATE TABLE Liitostaulu(
   elokuva INTEGER REFERENCES Movie(id),
-  arvostelija varchar(20) REFERENCES Reviewer(nimi)
+  arvostelija INTEGER REFERENCES Reviewer(id)
 );
 
 CREATE TABLE Review(
-  arvostelija varchar(20) REFERENCES Reviewer(nimi),
+  arvostelija INTEGER REFERENCES Reviewer(id),
   elokuva INTEGER REFERENCES Movie(id),
   teksti varchar(2000),
   arvosana FLOAT(2),

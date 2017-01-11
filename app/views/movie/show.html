@@ -1,5 +1,6 @@
 {% extends "base.html" %}
 {% block content %}
+  <p>{{message}}</p>
   <h1>{{movie.nimi}}</h1>
 
   <form method="post" action="{{base_path}}/movie/{{movie.id}}/destroy" style="display: inline-block;">
