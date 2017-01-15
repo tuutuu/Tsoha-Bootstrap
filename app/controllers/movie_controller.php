@@ -49,11 +49,15 @@ class MovieController extends BaseController {
         );
 
         $movie = new Movie($attributes);
-
-        // Kutsutaan alustetun olion update-metodia, joka päivittää elokuvan tiedot tietokannassa
-        $movie->update();
-
-        Redirect::to('/movie', array('message' => 'Elokuvaa muokattu'));
+        $errors = $movie->errors();
+        
+        if (count($errors) == 0) {            
+            // Kutsutaan alustetun olion update-metodia, joka päivittää elokuvan tiedot tietokannassa
+            $movie->update();
+            Redirect::to('/movie', array('message' => 'Elokuvaa muokattu'));
+        } else {
+            Redirect::to('/movie/' . $id . '/edit', array('errors' => $errors));
+        }
     }
 
     public static function destroy($id) {

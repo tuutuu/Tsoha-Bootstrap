@@ -70,6 +70,9 @@
       if ($this->nimi == '' || $this->nimi == null) {
         $errors[] = 'Nimi ei saa olla tyhjä';
       }
+      if (strlen($this->nimi) > 50) {
+        $errors[] = 'Liian pitkä nimi (max 50 merkkiä)';
+      }
       return $errors;
     }
   }

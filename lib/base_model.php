@@ -30,12 +30,4 @@
       return $errors;
     }
 
-    public function validate_string_length($string, $length) {
-      if(strlen($string) < $length){
-        $errors[] = 'Nimen pituuden tulee olla vähintään '+$length+' merkkiä';
-      }
-
-      return $errors;
-    }
-
   }

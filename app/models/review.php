@@ -6,10 +6,13 @@
     //Konstruktori
     public function __construct($attributes) {
       parent::__construct($attributes);
+      $this->validators = array(
+          'validate_teksti',
+          'validate_arvosana'
+      );
     }
     
-    public function save() {
-      //Todo Review save
+    public function save() {      
       $query = DB::connection()->prepare('INSERT INTO Review (arvostelija_id, elokuva_id, teksti, arvosana) VALUES (:arvostelija_id, :elokuva_id, :teksti, :arvosana)');
       $query->execute(array(
           'arvostelija_id' => $this->arvostelija_id,
@@ -48,5 +51,24 @@
     public function destroy_reviews($elokuva_id) {
       $query = DB::connection()->prepare('DELETE FROM Review WHERE elokuva_id=:elokuva_id');
       $query->execute(array('elokuva_id' => $elokuva_id));
+    }
+    
+    public function validate_teksti() {
+      $errors = array();
+      if ($this->teksti == '' || $this->teksti == null) {
+        $errors[] = 'Kommentti puuttuu';
+      }
+      if (strlen($this->teksti) > 2000) {
+        $errors[] = 'Liian pitkä kommentti (max 2000 merkkiä)';
+      }
+      return $errors;
+    }
+    
+    public function validate_arvosana() {
+      $errors = array();
+      if ($this->arvosana > 10 || $this->arvosana < 1) {
+        $errors[] = 'Virheellinen arvosana. Anna liukuluku asteikolla 1-10';
+      }      
+      return $errors;
     }
   }

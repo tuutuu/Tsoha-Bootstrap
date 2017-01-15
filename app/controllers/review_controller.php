@@ -11,12 +11,14 @@ class ReviewController extends BaseController {
             'arvosana' => $params['arvosana']
         );
         $review = new Review($attributes);
+        $errors = $review->errors();
         
-        //todo validation
-        
-        $review->save();
-        
-        Redirect::to('/movie/' . $review->elokuva_id, array('message' => 'Arvostelu lisätty'));
+        if (count($errors) == 0) {
+            $review->save();        
+            Redirect::to('/movie/' . $id, array('message' => 'Arvostelu lisätty'));
+        } else {
+            Redirect::to('/movie/'. $id, array('errors' => $errors, 'attributes' => $attributes));
+        }
     }
     
     public static function destroy_reviews($elokuva_id) {

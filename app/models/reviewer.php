@@ -6,6 +6,10 @@
     //Konstruktori
     public function __construct($attributes) {
       parent::__construct($attributes);
+      $this->validators = array(
+          'validate_nimi',
+          'validate_salasana'
+      );
     }
 
     public static function authenticate($nimi, $salasana) {
@@ -52,5 +56,27 @@
       ));
       $row = $query->fetch();
       $this->id = $row['id'];
+    }
+    
+    public function validate_nimi() {
+      $errors = array();
+      if ($this->nimi == '' || $this->nimi == null) {
+        $errors[] = 'Käyttäjänimi puuttuu';
+      }
+      if (strlen($this->nimi) > 20) {
+        $errors[] = 'Liian pitkä nimi (max 20 merkkiä)';
+      }
+      return $errors;
+    }
+    
+    public function validate_salasana() {
+      $errors = array();
+      if ($this->salasana == '' || $this->salasana == null) {
+        $errors[] = 'Salasana puuttuu';
+      }
+      if (strlen($this->salasana) > 50) {
+        $errors[] = 'Liian pitkä salasana (max 50 merkkiä)';
+      }
+      return $errors;
     }
   }

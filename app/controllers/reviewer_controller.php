@@ -9,12 +9,14 @@
             'salasana' => $params['salasana']
         );
         $reviewer = new Reviewer($attributes);
-        
-        //todo validation
-        
-        $reviewer->save();
-        
-        Redirect::to('/', array('message' => 'Rekisteröidyit onnistuneesti, ' . $params['nimi']));
+        $errors = $reviewer->errors();
+       
+        if (count($errors) == 0) {
+            $reviewer->save();        
+            Redirect::to('/login', array('message' => 'Rekisteröidyit onnistuneesti, ' . $params['nimi'], 'nimi' => $params['nimi']));
+        } else {
+            Redirect::to('/register', array('errors' => $errors, 'attributes' => $attributes));
+        }
     } 
       
     public static function login() {
