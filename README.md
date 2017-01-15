@@ -1,16 +1,22 @@
-# Tietokantasovelluksen esittelysivu
+# Harjoitustyö: Tietokantasovellus
 
-Yleisiä linkkejä:
+* [Linkki sovellukseen](http://tupitupi.users.cs.helsinki.fi/tsoha/)
+* [Linkki dokumentaatioon](https://github.com/tuutuu/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
 
-* [Linkki sovellukseeni](http://tupitupi.users.cs.helsinki.fi/tsoha/)
-* [Linkki dokumentaatiooni](https://github.com/tuutuu/Tsoha-Bootstrap/blob/master/doc/dokumentaatio.pdf)
+##Testitunnukset
 
-Views-suunnitelmien linkit:
+Rekisteröityminen on helppoa. Jos kuitenkin haluat käyttää valmiita tunnuksia sovelluksen kokeilemiseen, käytä seuraavia:
 
-* [login.html](http://tupitupi.users.cs.helsinki.fi/tsoha/login)
-* [movies.html](http://tupitupi.users.cs.helsinki.fi/tsoha/movies)
-* [reviews.html](http://tupitupi.users.cs.helsinki.fi/tsoha/reviews)
+* Käyttäjänimi: Tuure
+* Salasana: passu123
 
 ## Työn aihe
 
-Tästä on tulossa elokuva-arvostelusivu. Käyttäjät voivat arvostella elokuvia antamalla sekä arvosanan että sanallisen arvostelun. Muiden arvosteluille voi antaa ääniä. Käyttäjällä on oma profiili, jossa näkyy kaikki hänen arvostelemansa elokuvat.
+Elokuva-arvostelusivu. Sovelluksessa voi kirjoittaa elokuville arvosteluja ja antaa niille arvosanoja. Dokumentaatiossa tarkemmin.
+
+## In English
+
+This is a project for a university course. The goal was to learn to code a simple web application using the following tools:
+
+* PHP
+* PostgreSQL
