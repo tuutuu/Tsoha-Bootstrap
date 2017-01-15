@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 {% block content %}
   <p>{{message}}{{error}}</p>
-  <h1>Kirjaudu sisään</h1>
+  <h1>Rekisteröityminen</h1>
 
   <!-- Kaikki lomakkeen elementit form-tagin sisään -->
-  <form method="post" action="{{base_path}}/login">
+  <form method="post" action="{{base_path}}/register">
     <!-- Tekstikenttä käyttäjätunnukselle -->
     <div class="form-group">
       <label>Käyttäjänimi</label>
@@ -17,8 +17,6 @@
       <input type="password" name="salasana" class="form-control">
     </div>
 
-    <button type="submit" class="btn btn-primary">Login</button>
+    <button type="submit" class="btn btn-primary">Rekisteröidy</button>
   </form>
-  
-  <p>Uusi käyttäjä? Rekisteröidy <a href="{{base_path}}/register">täällä</a>
 {% endblock %}

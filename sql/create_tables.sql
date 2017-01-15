@@ -10,15 +10,9 @@ CREATE TABLE Reviewer(
   salasana varchar(50)
 );
 
-CREATE TABLE Liitostaulu(
-  elokuva INTEGER REFERENCES Movie(id),
-  arvostelija INTEGER REFERENCES Reviewer(id)
-);
-
 CREATE TABLE Review(
-  arvostelija INTEGER REFERENCES Reviewer(id),
-  elokuva INTEGER REFERENCES Movie(id),
+  arvostelija_id INTEGER REFERENCES Reviewer(id),
+  elokuva_id INTEGER REFERENCES Movie(id),
   teksti varchar(2000),
-  arvosana FLOAT(2),
-  updownvotes INTEGER
+  arvosana FLOAT(2)
 );

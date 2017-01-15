@@ -13,10 +13,6 @@
     HelloWorldController::sandbox();
   });
 
-  $routes->get('/login', function() {
-    HelloWorldController::login();
-  });
-
   $routes->get('/movies', function() {
     HelloWorldController::movies();
   });
@@ -29,11 +25,11 @@
     MovieController::index();
   });
 
-  $routes->post('/movie', function(){
+  $routes->post('/movie', 'check_logged_in', function(){
     MovieController::store();
   });
 
-  $routes->get('/movie/new', function(){
+  $routes->get('/movie/new', 'check_logged_in', function(){
     MovieController::create();
   });
 
@@ -41,15 +37,15 @@
     MovieController::show($id);
   });
 
-  $routes->get('/movie/:id/edit', function($id){
+  $routes->get('/movie/:id/edit', 'check_logged_in', function($id){
     MovieController::edit($id);
   });
 
-  $routes->post('/movie/:id/edit', function($id){
+  $routes->post('/movie/:id/edit', 'check_logged_in', function($id){
     MovieController::update($id);
   });
 
-  $routes->post('/movie/:id/destroy', function($id){
+  $routes->post('/movie/:id/destroy', 'check_logged_in', function($id){
     MovieController::destroy($id);
   });
 
@@ -63,4 +59,16 @@
 
   $routes->post('/logout', function(){
     ReviewerController::logout();
+  });
+  
+  $routes->get('/register', function(){
+    ReviewerController::register();
+  });
+  
+  $routes->post('/register', function(){
+    ReviewerController::store();
+  });
+  
+  $routes->post('/movie/:id/post_review', 'check_logged_in', function($id){
+    ReviewController::store($id);
   });

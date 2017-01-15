@@ -5,7 +5,7 @@
     public static function get_reviewer_logged_in(){
       // Toteuta kirjautuneen käyttäjän haku tähän
       if(isset($_SESSION['reviewer'])) {
-        $reviewer_id = $_SESSION['reviewer'];
+        $id = $_SESSION['reviewer'];
         $reviewer = Reviewer::find($id);
         return $reviewer;
       }

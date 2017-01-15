@@ -1,9 +1,50 @@
 {% extends "base.html" %}
 {% block content %}
   <p>{{message}}</p>
+
   <h1>{{movie.nimi}}</h1>
 
   <form method="post" action="{{base_path}}/movie/{{movie.id}}/destroy" style="display: inline-block;">
     <button type="submit" class="btn btn-danger">Poista elokuva</button>
   </form>
+  
+  <h3>Arvostelut</h3>
+  <table class="table table-striped table-bordered">
+    <thead>
+      <tr>
+        <th>Kommentti</th>
+        <th>Arvosana</th>
+        <th>Käyttäjä</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      {% for review in reviews %}
+        <tr>
+          <td>{{review.teksti}}</td>
+          <td>{{review.arvosana}}</td>
+          <td>{{review.arvostelija_nimi}}</td>
+        </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  
+  
+  <h3>Arvostele</h3>
+  <form method="post" action="{{base_path}}/movie/{{movie.id}}/post_review">    
+    <div class="form-group">
+      <label>Kommentti</label>
+      <input type="text" name="teksti" class="form-control">
+    </div>
+
+    
+    <div class="form-group">
+      <label>Arvosana 1-10</label>
+      <input type="number" step=0.1 name="arvosana" class="form-control">
+    </div>
+
+    <button type="submit" class="btn btn-primary">Lähetä</button>
+  </form>
+  
+  
 {% endblock %}

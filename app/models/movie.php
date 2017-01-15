@@ -11,7 +11,7 @@
 
     public static function all() {
       //Tietokantayhteyden alustaminen
-      $query = DB::connection()->prepare('SELECT * FROM Movie');
+      $query = DB::connection()->prepare('SELECT * FROM Movie ORDER BY id DESC');
 
       $query->execute();
       $rows = $query->fetchAll();
@@ -54,9 +54,10 @@
 
     public function update() {
       $query = DB::connection()->prepare('UPDATE Movie SET nimi=:nimi WHERE id=:id');
-      $query->execute(array('nimi' => $this->nimi));
-      $row = $query->fetch();
-      $this->id = $row['id'];
+      $query->execute(array(
+          'nimi' => $this->nimi,
+          'id' => $this->id
+      ));
     }
 
     public function destroy() {
@@ -70,9 +71,5 @@
         $errors[] = 'Nimi ei saa olla tyhjä';
       }
       return $errors;
-    }
-
-    public function getId() {
-      return $this->id;
     }
   }
